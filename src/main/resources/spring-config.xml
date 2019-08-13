@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="book" class="Book">
         <property name="bookName" value="平凡的世界"/>
@@ -12,4 +13,25 @@
     </bean>
     <bean id="demoPrototypeService" class="chapter03.scope.DemoPrototypeService"
           scope="prototype"/>
+    <beans profile="dev">
+        <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+              p:driverClassName="com.mysql.jdbc.Driver"
+              p:url="jdbc:mysql://localhost:3306/mybatis_action_db"
+              p:username="dev"
+              p:password="dev"/>
+    </beans>
+    <beans profile="qa">
+        <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+              p:driverClassName="com.mysql.jdbc.Driver"
+              p:url="jdbc:mysql://localhost:3307/mybatis_action_db"
+              p:username="qa"
+              p:password="qa"/>
+    </beans>
+    <beans profile="prod">
+        <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+              p:driverClassName="com.mysql.jdbc.Driver"
+              p:url="jdbc:mysql://localhost:3308/mybatis_action_db"
+              p:username="prod"
+              p:password="prod"/>
+    </beans>
 </beans>
