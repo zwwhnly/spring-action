@@ -10,4 +10,6 @@
         <property name="name" value="路遥"/>
         <property name="age" value="60"/>
     </bean>
+    <bean id="demoPrototypeService" class="chapter03.scope.DemoPrototypeService"
+          scope="prototype"/>
 </beans>
