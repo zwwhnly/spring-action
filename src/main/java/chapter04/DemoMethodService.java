@@ -7,4 +7,8 @@ public class DemoMethodService {
     public void add() {
         System.out.println("DemoMethodService.add()");
     }
+
+    public void subtract() {
+        System.out.println("DemoMethodService.subtract()");
+    }
 }

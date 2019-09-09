@@ -7,10 +7,12 @@ public class Main {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AopConfig.class);
 
         DemoAnnotationService demoAnnotationService = context.getBean(DemoAnnotationService.class);
-        DemoMethodService demoMethodService = context.getBean(DemoMethodService.class);
+        //DemoMethodService demoMethodService = context.getBean(DemoMethodService.class);
 
         demoAnnotationService.add();
-        demoMethodService.add();
+        demoAnnotationService.plus();
+        //demoMethodService.add();
+        //demoMethodService.subtract();
 
         context.close();
     }
