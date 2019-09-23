@@ -1,19 +1,18 @@
 package chapter05.controller;
 
 import chapter05.model.DemoObj;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/anno")
 public class DemoAnnoController {
-    @RequestMapping(produces = "text/plain;charset=UTF-8")
-    public @ResponseBody
-    String index(HttpServletRequest request) {
+    @RequestMapping(value = "/index", method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
+    @ResponseBody
+    public String index(HttpServletRequest request) {
         return "url:" + request.getRequestURI() + " can access";
     }
 
@@ -23,15 +22,16 @@ public class DemoAnnoController {
         return "url:" + request.getRequestURI() + " can access,str: " + str;
     }
 
-    @RequestMapping(value = "/requestParam", produces = "text/plain;charset=UTF-8")
-    public @ResponseBody
-    String passRequestParam(Long id, HttpServletRequest request) {
-        return "url:" + request.getRequestURI() + " can access,id: " + id;
+    @RequestMapping(value = "/requestParam", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
+    @ResponseBody
+    public String passRequestParam(@RequestParam(value = "id", defaultValue = "1") Long id, @RequestParam(value = "name", defaultValue = "zwwhnly") String name,
+                                   HttpServletRequest request) {
+        return "url:" + request.getRequestURI() + " can access,id: " + id + ",name=" + name;
     }
 
-    @RequestMapping(value = "/obj", produces = "application/json;charset=UTF-8")
+    @RequestMapping(value = "/passObj", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
-    public String passObj(DemoObj demoObj, HttpServletRequest request) {
+    public String passObj(@RequestBody DemoObj demoObj, HttpServletRequest request) {
         return "url:" + request.getRequestURI() + " can access,demoObj id：" + demoObj.getId() +
                 " demoObj name:" + demoObj.getName();
     }
