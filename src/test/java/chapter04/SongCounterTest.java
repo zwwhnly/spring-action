@@ -1,5 +1,8 @@
-package chapter04.soundsystem;
+package chapter04;
 
+import chapter04.soundsystem.CompactDisc;
+import chapter04.soundsystem.SongCounter;
+import chapter04.soundsystem.SongCounterConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

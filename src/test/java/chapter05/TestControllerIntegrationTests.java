@@ -1,4 +1,4 @@
-package springmvc;
+package chapter05;
 
 import chapter05.config.MyMvcConfig;
 import chapter05.service.DemoService;
@@ -6,8 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -29,12 +27,6 @@ public class TestControllerIntegrationTests {
 
     @Autowired
     private WebApplicationContext webApplicationContext;
-
-    @Autowired
-    private MockHttpSession session;
-
-    @Autowired
-    private MockHttpServletRequest request;
 
     @Before
     public void setup() {
